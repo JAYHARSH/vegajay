@@ -1,0 +1,8 @@
+D:\vega\bin\Debug\netcoreapp1.1\Vega.deps.json
+D:\vega\bin\Debug\netcoreapp1.1\Vega.runtimeconfig.json
+D:\vega\bin\Debug\netcoreapp1.1\Vega.runtimeconfig.dev.json
+D:\vega\bin\Debug\netcoreapp1.1\Vega.dll
+D:\vega\bin\Debug\netcoreapp1.1\Vega.pdb
+D:\vega\obj\Debug\netcoreapp1.1\Vega.AssemblyInfo.cs
+D:\vega\obj\Debug\netcoreapp1.1\Vega.dll
+D:\vega\obj\Debug\netcoreapp1.1\Vega.pdb
