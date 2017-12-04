@@ -8,6 +8,7 @@ import * as auth0 from "auth0-js";
 
 @Injectable()
 export class AuthService {
+  userProfile: any;
 
   auth0 = new auth0.WebAuth({
     clientID: 'mAjzam81KIKSXws5BhSgznmgHeVViYIi',
@@ -15,7 +16,7 @@ export class AuthService {
     responseType: 'token id_token',
     audience: 'http://localhost:5000/vehicles',
     redirectUri: 'http://localhost:5000',      
-    scope: 'openid'
+    scope: 'app_metadata openid profile '
   });
 
   constructor(public router: Router) {}
@@ -29,6 +30,9 @@ export class AuthService {
     this.auth0.parseHash((err, authResult) => {
         console.log(authResult);
       if (authResult && authResult.accessToken && authResult.idToken) {
+    
+        console.log(authResult.idTokenPayload["https://example.com/roles:"]);
+
         window.location.hash = '';
         this.setSession(authResult);
         this.router.navigate(['/vehicles']);
@@ -38,7 +42,7 @@ export class AuthService {
       }
     });
   }
-
+  
   private setSession(authResult): void {
     // Set the time that the access token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
@@ -62,6 +66,26 @@ export class AuthService {
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
+   
+  
+
+  public getProfile(cb): void {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('Access token must exist to fetch profile');
+    }
+  
+    const self = this;
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        self.userProfile = profile;
+      }
+      cb(err, profile);
+    });
+  }
+ 
+    
+
 
 
 }

@@ -20,6 +20,14 @@
                         <span class='glyphicon glyphicon-user'></span> Login
                     </a>
                 </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a  [routerLink]="['/profile']" *ngIf="auth.isAuthenticated()">
+                        <span class='glyphicon glyphicon-cog'></span> Profile
+                    </a>
+                </li>
+
+                   
+              
 
                 <li [routerLinkActive]="['link-active']">
                     <a (click)="auth.logout()" *ngIf="auth.isAuthenticated()">
@@ -29,22 +37,24 @@
                 
                 <li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/admin']">
-                        <span class='glyphicon glyphicon-font'></span> Vehicles
+                        <span class='glyphicon glyphicon-font'></span> Admin
                     </a>
                 </li>
 
                 
                 <li [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact:true}">
-                    <a [routerLink]="['/vehicles']">
+                    <a [routerLink]="['/vehicles']" >
                         <span class='glyphicon glyphicon-home'></span> Vehicles
                     </a>
                 </li>
 
-                <li [routerLinkActive]="['link-active']">
+                <li [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact:true}">
                     <a [routerLink]="['/vehicles/new']">
                         <span class='glyphicon glyphicon-plus'></span> New Vehicles
                     </a>
                 </li>
+
+
                 <li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/counter']">
                         <span class='glyphicon glyphicon-education'></span> Counter

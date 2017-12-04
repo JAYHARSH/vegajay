@@ -22,6 +22,7 @@ import { BrowserXhr } from "@angular/http";
 import { BrowserXhrWithProgress, ProgressService } from "./progress.service";
 import { AuthService } from "./auth.service";
 import { AdminComponent } from "./components/admin/admin.component";
+import { ProfileComponent } from "./profile/profile.component";
 
 
 
@@ -42,6 +43,7 @@ export const sharedConfig: NgModule = {
         HomeComponent,
         PaginationComponent,
         AdminComponent,
+        ProfileComponent
     ],
     providers:[
         {provide: ErrorHandler,useClass: AppErrorHandler},
@@ -56,6 +58,7 @@ export const sharedConfig: NgModule = {
             { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'admin', component: AdminComponent },
+            { path: 'profile', component: ProfileComponent },
             { path: 'vehicles/new', component:VehicleFormComponent},
             { path: 'vehicles', component:VehicleListComponent},
             { path: 'vehicles/edit/:id', component:VehicleFormComponent},

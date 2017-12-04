@@ -10,9 +10,9 @@ export class AdminComponent implements OnInit {
     labels:['BMW','Audi','Mazda'],
     datasets:[
       {
+       
         data:[5,3,1],
         backgroundColor:["#blue","#36a2eb","#ffce56"]
-
 
       }
     ],

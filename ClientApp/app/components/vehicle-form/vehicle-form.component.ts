@@ -49,10 +49,7 @@ export class VehicleFormComponent implements OnInit {
 
   ngOnInit() {
 
-    var sources=[
-     this.vehicleService.getMakes(),
-     this.vehicleService.getFeatures(),
-     ];
+    var sources=[this.vehicleService.getMakes(),this.vehicleService.getFeatures()];
     if(this.vehicle.id)
     sources.push(this.vehicleService.getVehicle(this.vehicle.id));
     Observable.forkJoin(sources).subscribe(data=>{
@@ -64,7 +61,8 @@ export class VehicleFormComponent implements OnInit {
     },
     err=>{
       if(err.status==404)
-                        {
+                       
+        {
                           this.router.navigate(['/home']);
                         }
           });
